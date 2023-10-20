@@ -1,0 +1,28 @@
+h3{
+    text-decoration:underline;
+}
+
+.bold-text {
+    color:orange;
+}
+
+#backgroundcolor {
+    background-color: antiquewhite;
+}
+
+.list-container{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.list-container > .list > h3 {
+    text-align: center !important;
+}
+
+.list-container  > .list {
+    vertical-align: top;
+    display: inline-block;
+    margin: 30px;
+    text-align: left;
+}
