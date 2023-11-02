@@ -1,0 +1,137 @@
+<html>
+<head>
+    <title>Cartoon Perfection</title>
+    <script src="p5.js"></script>
+</head>
+<body>
+    <script>
+        //variables
+        var faceX = 250;
+        var leftLegY = 300;
+        var rightLegY = 300;
+        var movingLeft = true;
+        var movingUp = true;
+        var legSpeed = 4;
+        var faceSpeed = 2;
+        var torsoX = 200;
+        var torsoY = 150;
+        var torsoSpeedX = 2;
+        var torsoSpeedY = 2;
+        var fontSize = 32;
+        var grow = true;
+        // setup
+        function setup() {
+            createCanvas(500, 500);
+        }
+
+        function draw() {
+            background(200);
+            drawFace(faceX, 100);
+
+            // Face Movement
+            if (movingLeft) {
+                faceX -= random(1, 4);
+            } else {
+                faceX += random(1, 4);
+            }
+            if (faceX <= 0 || faceX >= width - 50) {
+                movingLeft = !movingLeft;
+            }
+
+            // Leg movement
+            if (movingUp) {
+                leftLegY -= legSpeed + random(1, 4); // speed up
+                rightLegY -= legSpeed + random(1, 4); // speed up
+            } else {
+                leftLegY += legSpeed + random(1, 4); // speed down
+                rightLegY += legSpeed + random(1, 4); // speed down
+            }
+            if (leftLegY <= 150 || leftLegY >= height - 50 || rightLegY <= 150 || rightLegY >= height - 50) {
+                movingUp = !movingUp;
+            }
+
+            // Torso movement
+            torsoX += torsoSpeedX;
+            torsoY += torsoSpeedY;
+
+            if (torsoX <= 0 || torsoX >= width - 100) {
+                torsoSpeedX *= -1;
+            }
+            if (torsoY <= 0 || torsoY >= height - 150) {
+                torsoSpeedY *= -1;
+            }
+            // Text size change
+            if (grow) {
+                fontSize += 1; 
+            } else {
+                fontSize -= 1; 
+            }
+
+            // If the font size reaches a certain limit, reverse the direction
+            if (fontSize >= 70 || fontSize <= 16) {
+                grow = !grow;
+            }
+
+            // Rest of body no movement
+
+            // Shoulders
+            fill(0, 0, 255);
+            square(150, 150, 50);
+            square(300, 150, 50);
+
+            // Arms
+            fill(255, 229, 180);
+            rect(100, 50, 50, 100);
+            triangle(150, 150, 150, 200, 100, 150);
+            triangle(350, 200, 350, 150, 400, 200);
+            rect(350, 200, 50, 100);
+
+            // Legs
+            fill(13, 26, 129);
+            rect(200, leftLegY, 40, 150);
+            rect(260, rightLegY, 40, 150);
+
+            fill(0, 0, 255);
+            rect(torsoX, torsoY, 100, 150);
+
+            // Signature
+            fill(0, 0, 0);
+            textSize(fontSize);
+           
+            text('Terry Farrar', 175, 480);
+
+        }
+        
+            //group all face elements into one 
+        function drawFace(x, y) {
+            fill(255, 229, 180); // Skintone
+            ellipse(x, y, 100, 100); // Face
+
+            // Eye sockets
+            fill(255);
+            ellipse(x - 25, y - 10, 25, 25); // Left eye socket
+            ellipse(x + 25, y - 10, 25, 25); // Right eye socket
+
+            // Pupils
+            fill(0, 0, 255);
+            ellipse(x - 25, y - 10, 10, 10); // Left pupil
+            ellipse(x + 25, y - 10, 10, 10); // Right pupil
+
+            // Lips
+            fill(230, 32, 32);
+            rect(x - 25, y + 25, 50, 10); // Lips
+
+            // Teeth
+            fill(255);
+            rect(x - 21, y + 29, 42, 2); // Teeth
+
+            // Hair
+            line(x, y - 50, x, y - 60);
+            line(x - 10, y - 49, x - 10, y - 60);
+            line(x + 10, y - 49, x + 10, y - 60);
+            line(x - 20, y - 48, x - 20, y - 58);
+            line(x + 20, y - 48, x + 20, y - 58);
+        }
+    </script>
+</body>
+</html>
