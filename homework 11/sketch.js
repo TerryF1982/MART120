@@ -33,7 +33,7 @@ function draw()
             }
         //square 2-- moving object  
         fill (150,25,25)  
-        square(x2,y2,50)
+        square(x2,y2,80)
         x2 += 10
         y2 += 12
         if (x2 >= 1000)
