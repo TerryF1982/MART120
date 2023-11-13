@@ -71,7 +71,7 @@ function draw()
 
         var distanceToExit = dist(playerX + 50, playerY + 50, 900, 900);
         if (distanceToExit < 50) {
-            // Display a message
+        
             fill(0);
             textSize(32);
             textAlign(CENTER, CENTER);
@@ -79,7 +79,7 @@ function draw()
         }
     }
         function mousePressed() {
-            // Add a new circle at the mouse position
+     
             circles.push({ x: mouseX, y: mouseY });
     
     }
